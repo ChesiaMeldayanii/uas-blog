@@ -15,7 +15,7 @@ This project is a simple blogging platform built using:
 - Data storage and retrieval using Supabase
 - Deployment using Vercel
 
-- 
+
 ## Contributor Part:
 1. Ni Putu Ayuk Riska Dewi (2201010004) As Back-end and Front-end Engineer
 2. Khairun Nisa (2201010023) As Front-end Engineer using Ejs , HTML and CSS
