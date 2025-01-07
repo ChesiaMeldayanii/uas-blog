@@ -84,7 +84,7 @@
   }
   
   /* Form Styles */
-  form {
+  .form-control {
     max-width: 600px;
     margin: 0 auto;
     background-color: #fff;
@@ -93,17 +93,17 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
   
-  form label {
+  .form-control label {
     display: block;
     margin-bottom: 5px;
     font-size: 1rem;
   }
   
-  form input[type="text"],
-  form input[type="email"],
-  form input[type="password"],
-  form textarea,
-  form input[type="file"] {
+  .form-control input[type="text"],
+  .form-control input[type="email"],
+  .form-control input[type="password"],
+  .form-control textarea,
+  .form-control input[type="file"] {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
@@ -111,11 +111,11 @@
     border-radius: 5px;
   }
   
-  form input[type="file"] {
+  .form-control input[type="file"] {
     padding: 8px 10px;
   }
   
-  form button {
+  .form-control button {
     background-color: #3498db;
     color: white;
     padding: 10px 20px;
@@ -125,7 +125,7 @@
     font-size: 1.1rem;
   }
   
-  form button:hover {
+  .form-control button:hover {
     background-color: #2980b9;
   }
   
@@ -152,7 +152,7 @@
       grid-template-columns: 1fr;
     }
   
-    form {
+    .form-control {
       padding: 20px;
     }
   }  

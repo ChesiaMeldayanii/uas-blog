@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,20 +14,24 @@
       padding: 0;
       background-color: #f4f4f4;
     }
+
     .navbar {
       background-color: #333;
       padding: 10px;
       text-align: center;
     }
+
     .navbar a {
       color: white;
       text-decoration: none;
       padding: 10px 20px;
       margin: 0 10px;
     }
+
     .navbar a:hover {
       background-color: #575757;
     }
+
     .dashboard-container {
       width: 80%;
       margin: 20px auto;
@@ -35,28 +40,65 @@
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
+
     h1 {
       color: #333;
     }
+
     ul {
       list-style-type: none;
       padding: 0;
     }
+
     li {
       border-bottom: 1px solid #ddd;
       padding: 20px 0;
     }
+
     li:last-child {
       border-bottom: none;
     }
+
     img {
       max-width: 100%;
       height: auto;
       border-radius: 8px;
       margin-top: 10px;
     }
+
+    .btn {
+      padding: 10px 20px;
+      margin-top: 8px;
+      border-radius: 5px;
+      color: #fff;
+      border: 0;
+      cursor: pointer;
+    }
+
+    .btn-delete {
+      background: maroon;
+      transition: 0.3s;
+    }
+
+    .btn-delete:hover {
+      background: transparent;
+      border: 1px solid maroon;
+      color: maroon;
+    }
+
+    .btn-edit {
+      background: navy;
+      transition: 0.3s;
+    }
+
+    .btn-edit:hover {
+      background: transparent;
+      border: 1px solid navy;
+      color: navy;
+    }
   </style>
 </head>
+
 <body>
 
   <div class="navbar">
@@ -67,16 +109,33 @@
   <div class="dashboard-container">
     <h1>Dashboard</h1>
     <ul>
-      <% blogs.forEach(blog => { %>
+      <% blogs.forEach(blog=> { %>
         <li>
-          <h2><%= blog.title %></h2>
-          <p><%= blog.content %></p>
-          <!-- Menampilkan gambar sampul yang diupload -->
-          <img src="<%= blog.coverImagePath %>" alt="Cover Image" />
+
+          <h2>
+            <%= blog.title %>
+          </h2>
+
+          <% let shortDescription=(blog.content || '' ).slice(0, 80); %>
+            <p>
+              <%= shortDescription %>..<a style="text-decoration: underline;" href="/read-blog/<%= blog.id  %>">Lihat
+                  Selengkapnya</a>
+            </p>
+            <img src="<%= blog.coverImagePath %>" alt="Cover Image" />
+
+
+            <div style="display: inline-block;">
+              <button onclick="location.href='/edit-blog/<%= blog.id %>'" class="btn btn-edit">Edit</button>
+              <form style="display: inline;" action="/delete-blog/<%= blog.id %>" method="POST">
+                <button type="submit" class="btn btn-delete">Delete</button>
+              </form>
+
+            </div>
         </li>
-      <% }); %>
+        <% }); %>
     </ul>
   </div>
 
 </body>
+
 </html>

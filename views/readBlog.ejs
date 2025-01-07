@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <title>
+        <%= blogData.title %>
+    </title>
+
+    <style>
+        body {
+            padding: 0 50px;
+        }
+
+        .leftcolumn {
+            float: left;
+            width: 75%;
+        }
+
+        .rightcolumn {
+            float: left;
+            width: 25%;
+            padding-left: 20px;
+        }
+
+        .img-content {
+            background-color: #aaa;
+            width: 100%;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        .card {
+            background-color: white;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .footer {
+            padding: 20px;
+            text-align: center;
+            background: #2c3e50;
+            color: #fff;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        @media screen and (max-width: 800px) {
+
+            .leftcolumn,
+            .rightcolumn {
+                width: 100%;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="/dashboard">Dashboard</a>
+        <a href="/logout">Logout</a>
+    </div>
+
+    <div class="row">
+        <div class="leftcolumn">
+            <div class="card">
+                <h2>
+                    <%= blogData.title %>
+                </h2>
+                <div class="img-content" style="height:400px;">
+                    <img src="<%= blogData.coverImagePath  %>" alt="Cover Image"
+                        style="object-fit: cover; width: 100%; height: 100%; border-radius:5px;">
+                </div>
+                <p>
+                    <%= blogData.content %>
+                </p>
+            </div>
+        </div>
+        <div class="rightcolumn">
+            <div class="card">
+                <h3>Popular Post</h3>
+                <% blogs.forEach(blog=> { %>
+                    <div class="img-content" style="height: 150px;">
+                        <img src="<%= blog.coverImagePath  %>" alt="Cover Image"
+                            style="object-fit: cover; height: 100%; border-radius:5px; width: 100%;">
+
+                        <% let shortTitle=(blog.title || '' ).slice(0, 50); %>
+                            <a href="/read-blog/<%= blog.id %>" style="font-weight: bold; text-decoration: underline;">
+                                <%= shortTitle %>..
+                            </a>
+                    </div><br><br>
+                    <% }); %>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Copyright &copy; Blog UAS</p>
+        <p>Make with <span style="color: red;">&hearts;</span></p>
+    </div>
+</body>
+
+</html>
