@@ -244,7 +244,7 @@ app.post("/delete-blog/:blogId", checkAuth, async (req, res) => {
 });
 
 // **Read Blog**
-app.get("/read-blog/:blogId", async (req, res) => {
+app.get("/read-blog/:blogId", checkAuth, async (req, res) => {
   const { blogId } = req.params;
 
   try {
